@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-FROM xychelsea/ffmpeg-nvidia:v0.4.1
+FROM mannyj37/anconda3
 LABEL description="DeepFaceLab GPU Container"
 
 # $ docker build --network=host -t xychelsea/deepfacelab:latest-gpu -f Dockerfile.nvidia .
