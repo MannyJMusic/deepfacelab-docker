@@ -68,7 +68,7 @@ RUN conda create -c nvidia -n deepfacelab python=3.7 cudnn=8.0.4 cudatoolkit=11.
     && conda clean -afy
 
 # Install rife from github repo
-RUN git clone git://github.com/xychelsea/deepfacelab.git ${DEEPFACELAB_PATH} \
+RUN git clone https://github.com/MannyJMusic/DeepFaceLab.git ${DEEPFACELAB_PATH} \
     && mkdir -p ${DEEPFACELAB_WORKSPACE} \
     && rm -rvf ${ANACONDA_PATH}/share/jupyter/lab/staging
 
