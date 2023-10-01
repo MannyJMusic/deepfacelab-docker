@@ -1,0 +1,58 @@
+---
+version: "2.0"
+
+services:
+  app:
+    image: mannyj37/deepfacelab:latest
+
+    command:
+      - "bash"
+      - "-c"
+    args:
+      - 'apt-get update ;
+        apt-get upgrade -y ;
+        apt-get install openssh-server -y ;
+        echo "root:sAs3*z2p!" | chpasswd ; 
+        echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config ; 
+        echo "PermitRootLogin yes" >> /etc/ssh/sshd_config ; 
+        service ssh restart ;
+        sleep infinity'
+
+    expose:
+      - port: 80
+        as: 80
+        to:
+          - global: true
+      - port: 22
+        as: 22
+        to:
+          - global: true
+profiles:
+  compute:
+    app:
+      resources:
+        cpu:
+          units: 1
+        memory:
+          size: 32Gi
+        gpu:
+          units: 1
+          attributes:
+            vendor:
+              nvidia:
+        storage:
+          size: 100Gi
+
+  placement:
+    akash:
+      attributes:
+
+      pricing:
+        app:
+          denom: uakt
+          amount: 10000
+deployment:
+  app:
+    akash:
+      profile: app
+      count: 1
